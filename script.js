@@ -28,10 +28,9 @@ let musicList = [
 
 
 let isSongPlaying = false
-let i = 2
+let i = 0
 
-console.log()
-
+//adding src and name of the music to the player
 loadMusic(musicList)
 
 function loadMusic(){
@@ -39,38 +38,39 @@ function loadMusic(){
     title.innerText = musicList[i].name
 }
 
+//changing to the previous music
 function previouXong(){
-    i--
+    i-- //music index should be decrease-
     if(i<0){
-        i = musicList.length -1
+        i = musicList.length -1 
     }
     loadMusic(musicList[i])
-    playMusic()
+    playMusic() //if you click on precious btn, previous music will be played
 }
 prevBtn.addEventListener('click', previouXong)
 
-
+//changing to the next music
 function nextSong(){
-    i++
+    i++     //music index should be increase
     if(i > (musicList.length -1)){
         i = 0
     }
     loadMusic(musicList[i])
-    playMusic()
+    playMusic() //if you click on next btn, next music will be played
 }
 nextBtn.addEventListener('click', nextSong)
 
-
+//playing music
 function playMusic(){
     isSongPlaying = true
     music.play()
-    playPauseBtn.innerHTML = '<i class="fa-regular fa-circle-pause"></i>'
+    playPauseBtn.innerHTML = '<i class="active fa-solid fa-pause"></i>' //swapping the play/pause icon
 }
 
 function pauseMusic(){
     isSongPlaying = false
     music.pause()
-    playPauseBtn.innerHTML = '<i class="fa-regular fa-circle-play"></i>'
+    playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>' ////swapping the play/pause icon
 
 }
 
